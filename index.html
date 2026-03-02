@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm đường đi giữa hai điểm - LEAFLET API</title>
+    
+    <!-- LEAFLET CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    
+    <!-- LEAFLET ROUTING CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.css" />
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1>🗺️ Tìm đường đi giữa hai điểm</h1>
+            <p>Sử dụng LEAFLET API để tìm cửa hàng gần nhất và đường đi tối ưu</p>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- SIDEBAR - Điều khiển -->
+            <aside class="sidebar">
+                <div class="control-section">
+                    <h2>⚙️ Điều khiển</h2>
+                    
+                    <!-- Chức năng 1: Xây dựng bản đồ -->
+                    <div class="feature-box">
+                        <h3>1️⃣ Bản đồ cơ bản</h3>
+                        <button id="showStoresBtn" class="btn btn-primary">Hiển thị cửa hàng</button>
+                    </div>
+
+                    <!-- Chức năng 2: Tìm cửa hàng gần nhất -->
+                    <div class="feature-box">
+                        <h3>2️⃣ Cửa hàng gần nhất</h3>
+                        <p class="info">Click trên bản đồ để chọn điểm, sau đó tìm cửa hàng gần nhất</p>
+                        <button id="findNearestBtn" class="btn btn-success">Tìm cửa hàng gần nhất</button>
+                    </div>
+
+                    <!-- Chức năng 3: Đường đi ngắn nhất (2 điểm) -->
+                    <div class="feature-box">
+                        <h3>3️⃣ Đường đi ngắn nhất</h3>
+                        <p class="info">Chọn 2 điểm trên bản đồ để tìm đường đi tối ưu</p>
+                        <button id="findShortestBtn" class="btn btn-info">Chọn 2 điểm</button>
+                    </div>
+
+                    <!-- Chức năng 4: Route với nhiều điểm -->
+                    <div class="feature-box">
+                        <h3>4️⃣ Route nhiều điểm</h3>
+                        <p class="info">Thêm 2+ điểm để tạo route mới</p>
+                        <button id="multiPointBtn" class="btn btn-warning">Thêm điểm</button>
+                    </div>
+
+                    <!-- Chức năng 5 & 6: Nhập tọa độ -->
+                    <div class="feature-box">
+                        <h3>5️⃣ Nhập tọa độ</h3>
+                        <div class="input-group">
+                            <label>Vĩ độ (Latitude):</label>
+                            <input type="number" id="latInput" placeholder="Ví dụ: 21.0285" step="0.0001">
+                        </div>
+                        <div class="input-group">
+                            <label>Kinh độ (Longitude):</label>
+                            <input type="number" id="lngInput" placeholder="Ví dụ: 105.8542" step="0.0001">
+                        </div>
+                        <button id="addCoordinateBtn" class="btn btn-secondary">Thêm điểm</button>
+                    </div>
+
+                    <!-- Clear -->
+                    <div class="feature-box">
+                        <button id="clearMapBtn" class="btn btn-danger">🗑️ Xóa tất cả</button>
+                    </div>
+                </div>
+
+                <!-- THÔNG TIN KHOẢNG CÁCH -->
+                <div class="info-section">
+                    <h2>📊 Thông tin</h2>
+                    <div id="distanceInfo" class="distance-info">
+                        <p>Chọn điểm để xem khoảng cách</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- MAP -->
+            <div class="map-container">
+                <div id="map" class="map"></div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>© 2026 LEAFLET Route Finder | Hướng dẫn: Click trên bản đồ để chọn điểm</p>
+        </footer>
+    </div>
+
+    <!-- LEAFLET JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    
+    <!-- LEAFLET ROUTING MACHINE JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
+    
+    <!-- DỮ LIỆU CỬA HÀNG -->
+    <script src="data.js"></script>
+    
+    <!-- LOGIC CHÍNH -->
+    <script src="script.js"></script>
+</body>
+</html>
